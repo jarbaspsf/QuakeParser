@@ -2,7 +2,6 @@ package quake.log.parser;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
@@ -12,9 +11,9 @@ public class Parser {
 	// Hash que representa o killRate de um jogador no padrão Nome / Kill
 	private HashMap<String, Integer> killRate = new HashMap<String, Integer>();
 
-	public void lerLog() throws IOException {
+	public void iniciarKillRate(String caminhoArquivo) throws IOException {
 
-		FileInputStream stream = new FileInputStream("raw/games.log");
+		FileInputStream stream = new FileInputStream(caminhoArquivo);
 		InputStreamReader sr = new InputStreamReader(stream);
 		BufferedReader br = new BufferedReader(sr);
 
@@ -36,6 +35,8 @@ public class Parser {
 				}
 			}
 		}
+		
+		br.close();
 
 	}
 	
@@ -48,9 +49,9 @@ public class Parser {
 	 * @throws IOException
 	 * Lança Execeção caso não encontre aquivo de log
 	 */
-	public void atualizarKills() throws IOException {
+	public void atualizarKills(String caminhoArquivo) throws IOException {
 
-		FileInputStream stream = new FileInputStream("raw/games.log");
+		FileInputStream stream = new FileInputStream(caminhoArquivo);
 		InputStreamReader sr = new InputStreamReader(stream);
 		BufferedReader br = new BufferedReader(sr);
 
@@ -97,6 +98,8 @@ public class Parser {
 					}
 				}
 		}
+		
+		br.close();
 	}
 	
 	public long contagemDeMortos(){

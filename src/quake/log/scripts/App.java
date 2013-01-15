@@ -1,12 +1,7 @@
 package quake.log.scripts;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.SortedSet;
-import java.util.TreeMap;
-import java.util.TreeSet;
 
 import quake.log.parser.Parser;
-import quake.log.util.RankingSorted;
 
 
 public class App {
@@ -20,9 +15,9 @@ public class App {
 		Parser p = new Parser();
 		
 		System.out.println("...Iniciando Log...");
-		p.lerLog();
+		p.iniciarKillRate("raw/games.log");
 		System.out.println("...Atualizando Contagem de Kills...");
-		p.atualizarKills();
+		p.atualizarKills("raw/games.log");
 		
 		System.out.println("\nGame:");
 		System.out.println("\nTotal de Mortos: "+p.contagemDeMortos());
