@@ -12,13 +12,11 @@ public class App {
 	 */
 	public static void main(String[] args) throws IOException {
 		
-		Parser p = new Parser();
+		Parser p = new Parser("raw/games.log");
 		
 		System.out.println("...Iniciando Log...");
-		p.iniciarKillRate("raw/games.log");
 		System.out.println("...Atualizando Contagem de Kills...");
-		p.atualizarKills("raw/games.log");
-		
+		p.atualizarKills();
 		System.out.println("\nGame:");
 		System.out.println("\nTotal de Mortos: "+p.contagemDeMortos());
 		System.out.println("\nJogadores: "+p.getKillRate().keySet());

@@ -8,11 +8,19 @@ import java.util.HashMap;
 
 public class Parser {
 
-	// Hash que representa o killRate de um jogador no padrão Nome / Kill
-	private HashMap<String, Integer> killRate = new HashMap<String, Integer>();
-
-	public void iniciarKillRate(String caminhoArquivo) throws IOException {
-
+	// Hash que representa o killRate de um jogador no padrão Nome / Kill (chave / valor)
+	private HashMap<String, Integer> killRate;
+	private String caminhoArquivo;
+	/**
+	 * Construtor que recebe o caminho do aquivo de log a ser lido, e inicia a contagem de kills
+	 * em 0 para cada jogador encontrado
+	 * @param caminhoArquivo
+	 * @throws IOException
+	 */
+	public Parser(String caminhoArquivo) throws IOException {
+		this.killRate = new HashMap<String, Integer>();
+		this.caminhoArquivo = caminhoArquivo;
+	
 		FileInputStream stream = new FileInputStream(caminhoArquivo);
 		InputStreamReader sr = new InputStreamReader(stream);
 		BufferedReader br = new BufferedReader(sr);
@@ -43,13 +51,13 @@ public class Parser {
 	/**
 	 * @author jarbas 
 	 * Método que atualiza o killRate de acordo com as seguintes regras:
-	 * se um jogador matou outro jogador +1
-	 * se um jogador cometeu suicidio +0
-	 * se um jogador foi morto pelo "mundo" -1 
+	 * se um jogador matou outro jogador +1 kill
+	 * se um jogador cometeu suicidio +0 kill
+	 * se um jogador foi morto pelo "mundo" -1 kill 
 	 * @throws IOException
 	 * Lança Execeção caso não encontre aquivo de log
 	 */
-	public void atualizarKills(String caminhoArquivo) throws IOException {
+	public void atualizarKills() throws IOException {
 
 		FileInputStream stream = new FileInputStream(caminhoArquivo);
 		InputStreamReader sr = new InputStreamReader(stream);
@@ -102,6 +110,11 @@ public class Parser {
 		br.close();
 	}
 	
+	
+	/**
+	 * Soma todas as kills dos jogadores
+	 * @return somatorio de kills de todos os jogadores
+	 */
 	public long contagemDeMortos(){
 		
 		int somaKills = 0;
@@ -122,6 +135,16 @@ public class Parser {
 	public void setKillRate(HashMap<String, Integer> killRate) {
 		this.killRate = killRate;
 	}
+
+	public String getCaminhoArquivo() {
+		return caminhoArquivo;
+	}
+
+	public void setCaminhoArquivo(String caminhoArquivo) {
+		this.caminhoArquivo = caminhoArquivo;
+	}
+	
+	
 	
 	
 
