@@ -14,8 +14,6 @@ Não poderá haver kills negativas, ou seja um jogador morto por evento 5 vezes 
 
 Notas de desenvolvimento:
 
-Primeira Parte, não utilizando TDD
-
 1) entendido o problema
 2) construido e implementei a solução:
 	- Implementado as classes Parser e App nos pacotes quake.log.parser
@@ -31,8 +29,6 @@ e mais facil de ser refatorado no futuro.
 
 6) Adicionando testes para o "PLUS" (contagem de meios de mortes)
 
-Segunda Parte, utilizando TDD
+Notas: depois do desenvolvimento, notei que poderia ter utilizado TDD, uma vez que eu já tinha a entendido e resolvido o problema.
 
-1) entendido o problema
-2) criado o teste RankingSortedTest
-3) Implementado RankingSortedTest de forma que os testes criados anteriormente fossem concluidos com sucesso
+
