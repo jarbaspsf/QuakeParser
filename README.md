@@ -2,6 +2,7 @@ QuakeParser
 ===========
 
 Escolhas do desenvolvedor:
+=======
 
 Sobre a contagem de kills ~> A contagem de kills funciona da seguinte maneira: 
 
@@ -13,6 +14,7 @@ Não poderá haver kills negativas, ou seja um jogador morto por evento 5 vezes 
  
 
 Notas de desenvolvimento:
+======
 
 Primeira Parte, não utilizando TDD
 
