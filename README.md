@@ -32,9 +32,7 @@ e mais facil de ser refatorado no futuro.
 
 6) Adicionando testes para o "PLUS" (contagem de meios de mortes)
 
-<<<<<<< HEAD
+
 Notas: depois do desenvolvimento, notei que poderia ter utilizado TDD, uma vez que eu já tinha a entendido e resolvido o problema.
 
-
-=======
->>>>>>> 27d4d1a61188d772686ff458bbe55958b72c9b22
+O jUnity foi o framework utulizados para testes, acredio que o eclipse (ou netbeans) já estejam integrados com o mesmo
