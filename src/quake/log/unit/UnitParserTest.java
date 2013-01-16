@@ -53,10 +53,10 @@ public class UnitParserTest {
 	public void testAtualizarKills() throws IOException {
 		/*Carrega log teste
 		 * neste log temos que:
-		 * o jogador Mal matou Isgalamido
-		 * o jogador Dono da Bola se suicidou
-		 * o jogador isgalamido se suicidou duas vezes
-		 * um evento do sistema (world) matou isgalamido 
+		 * o jogador Mal matou Isgalamido com o MOD_ROCKET_SPLASH
+		 * o jogador Dono da Bola se suicidou com o MOD_ROCKET_SPLASH
+		 * o jogador isgalamido se suicidou duas vezes com o MOD_ROCKET_SPLASH
+		 * um evento do sistema (world) matou isgalamido com o MOD_TRIGGER_HURT
 		 */
 		p = new Parser("raw/teste.log");
 		
@@ -70,22 +70,32 @@ public class UnitParserTest {
 		//Guarda as kills do jogador Isgalamido
 		int killJogadorIsgalamido = p.getKillRate().get(" Isgalamido ");
 		
-		// 1 kill
+		// 1 kill = 1
 		Assert.assertEquals(1, killJogadorMal);
-		// 1 Suicidio
+		// 1 Suicidio = 0
 		Assert.assertEquals(0, killJogadorDonoDaBola);
-		// 2 Suicidios, 1 morte por um evento de sistema
+		// 2 Suicidios, 1 morte por um evento de sistema = 0
 		Assert.assertEquals(0, killJogadorIsgalamido);
 		
+		//No total temos 4 mortes pelo MOD_ROCKET_SPLASH e 1 pelo MOD_TRIGGER_HURT
+		
+		//Guarda as kills por MOD_ROCKET_SPLASH
+		int killModRocketSplash = p.getMeios_de_morte().get(" MOD_ROCKET_SPLASH");
+		
+		//Guarda as kills por MOD_TRIGGER_HURT
+		int killModTriggerHurt = p.getMeios_de_morte().get(" MOD_TRIGGER_HURT");
+		
+		Assert.assertEquals(4, killModRocketSplash);
+		Assert.assertEquals(1, killModTriggerHurt);
 		/*
 		 * Carregando log teste2
 		 * neste log temos que:
-		 * o jogador mal se suicidou
-		 * o jogador Mal matou isgalamido 3 vezes
-		 * o jogador isgalamido matou Mal 14 vezes
-		 * o jogador Dono da bola matou Isgalamido 7 vezes
-		 * 3 eventos do sistema mataram o jogador Dono da bola
-		 * 2 eventos do sistema mataram o jogador Isgalamdio
+		 * o jogador Mal se suicidou com o MOD_ROCKET_SPLASH
+		 * o jogador Mal matou isgalamido 3 vezes com o MOD_ROCKET_SPLASH
+		 * o jogador isgalamido matou Mal 14 vezes com o MOD_ROCKET_SPLASH
+		 * o jogador Dono da bola matou Isgalamido 7 vezes com o MOD_ROCKET_SPLASH
+		 * 3 eventos do sistema mataram o jogador Dono da bola com o MOD_FALLING
+		 * 2 eventos do sistema mataram o jogador Isgalamdio com o MOD_FALLING
 		 */
 		p = new Parser("raw/teste2.log");
 		
@@ -106,12 +116,23 @@ public class UnitParserTest {
 		// 14 Kills, 2 mortes por eventos de sistema = 12
 		Assert.assertEquals(12, killJogadorIsgalamido);
 		
+		//No total temos 25 mortes pelo MOD_ROCKET_SPLASH e 5 pelo MOD_FALLING
+		
+		//Guarda as kills por MOD_ROCKET_SPLASH
+		killModRocketSplash = p.getMeios_de_morte().get(" MOD_ROCKET_SPLASH");
+				
+		//Guarda as kills por MOD_TRIGGER_HURT
+		int killModFalling = p.getMeios_de_morte().get(" MOD_FALLING");
+				
+		Assert.assertEquals(25, killModRocketSplash);
+		Assert.assertEquals(5, killModFalling);
+		
 		/*
 		 * Carregando log teste3
 		 * neste log temos:
-		 * o jogador Isgalamido morreu 20 vezes por eventos de sistema
-		 * o jogador Isgalamido matou Mal 2 vezes 
-		 * o jogador Isgalamido morreu por eventos de sistema
+		 * o jogador Isgalamido morreu 20 vezes por eventos de sistema com o MOD_FALLING
+		 * o jogador Isgalamido matou Mal 2 vezes com o MOD_ROCKET_SPLASH
+		 * o jogador Isgalamido morreu por eventos de sistema com o MOD_FALLING
 		 */
 		p = new Parser("raw/teste3.log");
 		
@@ -124,6 +145,17 @@ public class UnitParserTest {
 		//20 mortes por eventos de sistema, 
 		//2 kills, 1 morte por evento de sistema = 1
 		Assert.assertEquals(1, killJogadorIsgalamido);
+		
+		//No total temos 2 mortes pelo MOD_ROCKET_SPLASH e 21 pelo MOD_FALLING
+		
+		//Guarda as kills por MOD_ROCKET_SPLASH
+		killModRocketSplash = p.getMeios_de_morte().get(" MOD_ROCKET_SPLASH");
+						
+		//Guarda as kills por MOD_TRIGGER_HURT
+		killModFalling = p.getMeios_de_morte().get(" MOD_FALLING");
+						
+		Assert.assertEquals(2, killModRocketSplash);
+		Assert.assertEquals(21, killModFalling);
 		
 	}
 	/**

@@ -8,8 +8,10 @@ import java.util.HashMap;
 
 public class Parser {
 
-	// Hash que representa o killRate de um jogador no padrão Nome / Kill (chave / valor)
+	// Hash que representa o killRate de um jogador no padrão Nome / QtdKill (chave / valor)
 	private HashMap<String, Integer> killRate;
+	// Hash que representa os meios de morte que ocorreram no jogo no padrão modo / QtdKill (chave / valor)
+	private HashMap<String, Integer> meios_de_morte;
 	private String caminhoArquivo;
 	/**
 	 * Construtor que recebe o caminho do aquivo de log a ser lido, e inicia a contagem de kills
@@ -20,7 +22,8 @@ public class Parser {
 	public Parser(String caminhoArquivo) throws IOException {
 		this.killRate = new HashMap<String, Integer>();
 		this.caminhoArquivo = caminhoArquivo;
-	
+		this.meios_de_morte = new HashMap<String, Integer>();
+		
 		FileInputStream stream = new FileInputStream(caminhoArquivo);
 		InputStreamReader sr = new InputStreamReader(stream);
 		BufferedReader br = new BufferedReader(sr);
@@ -37,10 +40,17 @@ public class Parser {
 				//Por padrão do Log a terceira parte contem o nome do jogador
 				//na posição 0
 				String nomeJogadorAndMorto[] = s[3].split("killed");
+				//pegamos o resltado do split separamos novamente por "by"
+				//e agora temos na posição 0 o nome do JogadorMorto
+				//e na posição 1 o metodo (Foguete, evento do sistema etc...)
+				String nomeMortoAndMetodo[] = nomeJogadorAndMorto[1]
+						.split("by");
 				
 				if (!nomeJogadorAndMorto[0].contains("world")) {
 					killRate.put(nomeJogadorAndMorto[0], 0);
 				}
+				
+				meios_de_morte.put(nomeMortoAndMetodo[1], 0);
 			}
 		}
 		
@@ -62,7 +72,7 @@ public class Parser {
 		FileInputStream stream = new FileInputStream(caminhoArquivo);
 		InputStreamReader sr = new InputStreamReader(stream);
 		BufferedReader br = new BufferedReader(sr);
-
+		
 		String linha;
 		//Ler Arquivo de log
 		while ((linha = br.readLine()) != null) {
@@ -104,6 +114,10 @@ public class Parser {
 						
 						killRate.put(nomeMortoAndMetodo[0], kill);
 					}
+				
+					Integer cont_meios_de_morte = meios_de_morte.get(nomeMortoAndMetodo[1]);
+					cont_meios_de_morte++;
+					meios_de_morte.put(nomeMortoAndMetodo[1], cont_meios_de_morte);
 				}
 		}
 		
@@ -143,6 +157,16 @@ public class Parser {
 	public void setCaminhoArquivo(String caminhoArquivo) {
 		this.caminhoArquivo = caminhoArquivo;
 	}
+
+	public HashMap<String, Integer> getMeios_de_morte() {
+		return meios_de_morte;
+	}
+
+	public void setMeios_de_morte(HashMap<String, Integer> meios_de_morte) {
+		this.meios_de_morte = meios_de_morte;
+	}
+	
+	
 	
 	
 	

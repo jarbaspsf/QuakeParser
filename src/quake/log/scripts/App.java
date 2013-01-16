@@ -25,6 +25,11 @@ public class App {
 			System.out.println(nomeJogador+": "+p.getKillRate().get(nomeJogador)+" kills");
 		}
 		
+		System.out.println("\nContagem de meios de Kill:");
+		for(String nomeMeioMorte : p.getMeios_de_morte().keySet()){
+			System.out.println(nomeMeioMorte+": "+p.getMeios_de_morte().get(nomeMeioMorte));
+		}
+		
 	}
 
 }
