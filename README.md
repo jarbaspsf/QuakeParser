@@ -19,6 +19,7 @@ Notas de desenvolvimento:
 Primeira Parte, não utilizando TDD
 
 1) entendido o problema
+
 2) construido e implementei a solução:
 	- Implementado as classes Parser e App nos pacotes quake.log.parser
 	e quake.log.scripts
@@ -33,8 +34,3 @@ e mais facil de ser refatorado no futuro.
 
 6) Adicionando testes para o "PLUS" (contagem de meios de mortes)
 
-Segunda Parte, utilizando TDD
-
-1) entendido o problema
-2) criado o teste RankingSortedTest
-3) Implementado RankingSortedTest de forma que os testes criados anteriormente fossem concluidos com sucesso
