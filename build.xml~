@@ -48,7 +48,7 @@
 
     <path id="application" location="${dist}/QuakeParser.jar"/>
 
-    <target name="run" depends="jar">
+    <target name="run" depends="compile">
         <java fork="true" classname="${main-class}">
             <classpath>
                 <path refid="classpath"/>
@@ -57,7 +57,7 @@
         </java>
     </target>
     
-    <target name="junit" depends="jar">
+    <target name="junit" depends="compile">
         <junit printsummary="yes">
             <classpath>
                 <path refid="classpath"/>

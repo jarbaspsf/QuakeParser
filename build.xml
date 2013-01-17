@@ -47,15 +47,6 @@
     </target>
 
     <path id="application" location="${dist}/QuakeParser.jar"/>
-
-    <target name="run" depends="compile">
-        <java fork="true" classname="${main-class}">
-            <classpath>
-                <path refid="classpath"/>
-                <path refid="application"/>
-            </classpath>
-        </java>
-    </target>
     
     <target name="junit" depends="compile">
         <junit printsummary="yes">
