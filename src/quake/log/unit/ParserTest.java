@@ -64,11 +64,11 @@ public class ParserTest {
 		p.atualizarKills();
 		
 		//Guarda as kills do jogador Mal
-		int killJogadorMal = p.getKillRate().get(" Mal ");
+		int killJogadorMal = p.getKillRate().get("Mal");
 		//Guarda as kills do jogador Dono da Bola
-		int killJogadorDonoDaBola = p.getKillRate().get(" Dono da Bola ");
+		int killJogadorDonoDaBola = p.getKillRate().get("Dono da Bola");
 		//Guarda as kills do jogador Isgalamido
-		int killJogadorIsgalamido = p.getKillRate().get(" Isgalamido ");
+		int killJogadorIsgalamido = p.getKillRate().get("Isgalamido");
 		
 		// 1 kill = 1
 		Assert.assertEquals(1, killJogadorMal);
@@ -80,10 +80,10 @@ public class ParserTest {
 		//No total temos 4 mortes pelo MOD_ROCKET_SPLASH e 1 pelo MOD_TRIGGER_HURT
 		
 		//Guarda as kills por MOD_ROCKET_SPLASH
-		int killModRocketSplash = p.getMeios_de_morte().get(" MOD_ROCKET_SPLASH");
+		int killModRocketSplash = p.getMeios_de_morte().get("MOD_ROCKET_SPLASH");
 		
 		//Guarda as kills por MOD_TRIGGER_HURT
-		int killModTriggerHurt = p.getMeios_de_morte().get(" MOD_TRIGGER_HURT");
+		int killModTriggerHurt = p.getMeios_de_morte().get("MOD_TRIGGER_HURT");
 		
 		Assert.assertEquals(4, killModRocketSplash);
 		Assert.assertEquals(1, killModTriggerHurt);
@@ -103,11 +103,11 @@ public class ParserTest {
 		p.atualizarKills();
 				
 		//Guarda as kills do jogador Mal
-		killJogadorMal = p.getKillRate().get(" Mal ");
+		killJogadorMal = p.getKillRate().get("Mal");
 		//Guarda as kills do jogador Dono da Bola
-		killJogadorDonoDaBola = p.getKillRate().get(" Dono da Bola ");
+		killJogadorDonoDaBola = p.getKillRate().get("Dono da Bola");
 		//Guarda as kills do jogador Isgalamido
-		killJogadorIsgalamido = p.getKillRate().get(" Isgalamido ");
+		killJogadorIsgalamido = p.getKillRate().get("Isgalamido");
 				
 		// 1 suicidio, 3 kills = 3
 		Assert.assertEquals(3, killJogadorMal);
@@ -119,10 +119,10 @@ public class ParserTest {
 		//No total temos 25 mortes pelo MOD_ROCKET_SPLASH e 5 pelo MOD_FALLING
 		
 		//Guarda as kills por MOD_ROCKET_SPLASH
-		killModRocketSplash = p.getMeios_de_morte().get(" MOD_ROCKET_SPLASH");
+		killModRocketSplash = p.getMeios_de_morte().get("MOD_ROCKET_SPLASH");
 				
 		//Guarda as kills por MOD_TRIGGER_HURT
-		int killModFalling = p.getMeios_de_morte().get(" MOD_FALLING");
+		int killModFalling = p.getMeios_de_morte().get("MOD_FALLING");
 				
 		Assert.assertEquals(25, killModRocketSplash);
 		Assert.assertEquals(5, killModFalling);
@@ -140,7 +140,7 @@ public class ParserTest {
 		p.atualizarKills();
 				
 		//Guarda as kills do jogador Isgalamido
-		killJogadorIsgalamido = p.getKillRate().get(" Isgalamido ");
+		killJogadorIsgalamido = p.getKillRate().get("Isgalamido");
 		
 		//20 mortes por eventos de sistema, 
 		//2 kills, 1 morte por evento de sistema = 1
@@ -149,10 +149,10 @@ public class ParserTest {
 		//No total temos 2 mortes pelo MOD_ROCKET_SPLASH e 21 pelo MOD_FALLING
 		
 		//Guarda as kills por MOD_ROCKET_SPLASH
-		killModRocketSplash = p.getMeios_de_morte().get(" MOD_ROCKET_SPLASH");
+		killModRocketSplash = p.getMeios_de_morte().get("MOD_ROCKET_SPLASH");
 						
 		//Guarda as kills por MOD_TRIGGER_HURT
-		killModFalling = p.getMeios_de_morte().get(" MOD_FALLING");
+		killModFalling = p.getMeios_de_morte().get("MOD_FALLING");
 						
 		Assert.assertEquals(2, killModRocketSplash);
 		Assert.assertEquals(21, killModFalling);

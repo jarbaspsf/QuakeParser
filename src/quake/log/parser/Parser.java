@@ -47,10 +47,10 @@ public class Parser {
 						.split("by");
 				
 				if (!nomeJogadorAndMorto[0].contains("world")) {
-					killRate.put(nomeJogadorAndMorto[0], 0);
+					killRate.put(nomeJogadorAndMorto[0].trim(), 0);
 				}
 				
-				meios_de_morte.put(nomeMortoAndMetodo[1], 0);
+				meios_de_morte.put(nomeMortoAndMetodo[1].trim(), 0);
 			}
 		}
 		
@@ -94,16 +94,16 @@ public class Parser {
 				if (!nomeJogadorAndMorto[0].contains("world")) {
 					//Testa se o jogador cometeu suicidio
 					//se não é computada/adicionanda uma kill a ele
-					if (!nomeJogadorAndMorto[0]
-							.equalsIgnoreCase(nomeMortoAndMetodo[0])) {
-						Integer kill = killRate.get(nomeJogadorAndMorto[0]);
+					if (!nomeJogadorAndMorto[0].trim()
+							.equalsIgnoreCase(nomeMortoAndMetodo[0].trim())) {
+						Integer kill = killRate.get(nomeJogadorAndMorto[0].trim());
 						kill++;
-						killRate.put(nomeJogadorAndMorto[0], kill);
+						killRate.put(nomeJogadorAndMorto[0].trim(), kill);
 					}
 					//Se um evento do world matou o jogador
 					//é retirada uma kill do mesmo
 				}else {
-						Integer kill = killRate.get(nomeMortoAndMetodo[0]);
+						Integer kill = killRate.get(nomeMortoAndMetodo[0].trim());
 						kill--;
 						
 						//Se a quantidade de kills for negativa
@@ -112,12 +112,12 @@ public class Parser {
 							kill = 0;
 						}
 						
-						killRate.put(nomeMortoAndMetodo[0], kill);
+						killRate.put(nomeMortoAndMetodo[0].trim(), kill);
 					}
 				
-					Integer cont_meios_de_morte = meios_de_morte.get(nomeMortoAndMetodo[1]);
+					Integer cont_meios_de_morte = meios_de_morte.get(nomeMortoAndMetodo[1].trim());
 					cont_meios_de_morte++;
-					meios_de_morte.put(nomeMortoAndMetodo[1], cont_meios_de_morte);
+					meios_de_morte.put(nomeMortoAndMetodo[1].trim(), cont_meios_de_morte);
 				}
 		}
 		
