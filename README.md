@@ -13,7 +13,9 @@ Escolhas do desenvolvedor:
 Sobre a contagem de kills ~> A contagem de kills funciona da seguinte maneira: 
 
 caso o jogador se suicide = +0 Kill
+
 caso o jogador mate alguem = +1 Kill
+
 caso um evento mate o jogador = -1 kill
 
 Não poderá haver kills negativas, ou seja um jogador morto por evento 5 vezes e logo em seguida ganhou uma kill terá no total uma kill.
